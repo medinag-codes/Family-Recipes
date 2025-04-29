@@ -51,14 +51,6 @@
 
           <h2>Add a Recipe</h2>
         <% if (user.local.email) { %>
-          <!-- <form action="/recipes" method="POST">
-            <input type="text" placeholder="Author" name="author">
-            <input type="text" placeholder="Recipe Name" name="name" required>
-            <textarea placeholder="Ingredients" name="ing" required></textarea>
-            <textarea placeholder="Instructions" name="instr" required></textarea>
-            <button type="submit">Add Recipe</button>
-          </form> -->
-
           <form action="/recipes" method="POST">
             <input type="text" placeholder="Recipe Name" name="name" required>
             <textarea placeholder="Ingredients" name="ing" required></textarea>

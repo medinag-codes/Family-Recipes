@@ -3,5 +3,14 @@ body{
   word-wrap:break-word;
 }
 img{
-  height: 200px;
+  height: 400px;
+}
+
+h1{
+  text-shadow: 2px 3px 5px yellow;
+}
+
+.jumbotron{
+  background-color: hsla(0, 100%, 50%, 0.615);
+  border: 5px solid rgb(235, 221, 23);
 }
