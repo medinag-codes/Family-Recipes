@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+    <title>Secret Family Recipes</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1>Recipe Board</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+
+        <!-- LOCAL INFORMATION -->
+        <div class="col-sm-6">
+            <div class="well">
+                <h3><span class="fa fa-user"></span> Local</h3>
+
+                <% if (user.local.email) { %>
+                    <p>
+                        <strong>id</strong>: <%= user._id %><br>
+                        <strong>email</strong>: <%= user.local.email %><br>
+                        <strong>password</strong>: <%= user.local.password %>
+                    </p>
+
+                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
+                <% } else { %>
+                    <a href="/connect/local" class="btn btn-default">Connect Local</a>
+                <% } %>
+
+            </div>
+        </div>
+        <div class="col-sm-6">
+          <h3>Recipes</h3>
+          <ul class="recipes">
+            <% for (var i = 0; i < messages.length; i++) { %>
+              <li class="recipe">
+                <h4><a href="/recipes/<%= messages[i]._id %>"><%= messages[i].name %></a></h4>
+                <span><%= messages[i].thumbUp %></span>
+                <span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+                <span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+                <span><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+              </li>
+            <% } %>
+          </ul>
+
+          <h2>Add a Recipe</h2>
+        <% if (user.local.email) { %>
+          <!-- <form action="/recipes" method="POST">
+            <input type="text" placeholder="Author" name="author">
+            <input type="text" placeholder="Recipe Name" name="name" required>
+            <textarea placeholder="Ingredients" name="ing" required></textarea>
+            <textarea placeholder="Instructions" name="instr" required></textarea>
+            <button type="submit">Add Recipe</button>
+          </form> -->
+
+          <form action="/recipes" method="POST">
+            <input type="text" placeholder="Recipe Name" name="name" required>
+            <textarea placeholder="Ingredients" name="ing" required></textarea>
+            <textarea placeholder="Instructions" name="instr" required></textarea>
+            <button type="submit">Add Recipe</button>
+          </form>
+        </div>
+        <% } %>
+
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>
